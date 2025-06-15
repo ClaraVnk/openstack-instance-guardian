@@ -74,7 +74,7 @@ If a failure is detected, it will automatically launch a backup instance in anot
 
 ## How it works
 
-    ```bash
+```
 +--------------------+         (monitoring)
 |  Primary Instance  | <-------------------+
 +--------------------+                     |
@@ -90,8 +90,8 @@ If a failure is detected, it will automatically launch a backup instance in anot
    Shutdown failed instance                 |
         |                                   |
  Pushover notification <-------------------+
-    ```
-    
+```
+
  ## Important notes
 
 	•	Images & Snapshots: They must be available in all regions, otherwise the creation will fail.

@@ -1,0 +1,51 @@
+# Git
+.git
+.gitignore
+.github
+
+# Documentation
+README.md
+CHANGELOG.md
+LICENSE
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+openstack-guardian.log
+logs/
+
+# Environment
+.env
+.env.example
+
+# Docker
+docker-compose.yml
+Dockerfile
+
+# OpenStack
+clouds.yaml

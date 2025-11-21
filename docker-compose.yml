@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  openstack-guardian:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: openstack-instance-guardian
+    restart: unless-stopped
+    
+    # Variables d'environnement depuis le fichier .env
+    env_file:
+      - .env
+    
+    # Volume pour persister les logs
+    volumes:
+      - ./logs:/logs
+      - ./openstack-guardian.log:/app/openstack-guardian.log
+    
+    # Limites de ressources
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.1'
+          memory: 128M
+    
+    # Healthcheck
+    healthcheck:
+      test: ["CMD", "pgrep", "-f", "openstack-instance-guardian.py"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    
+    # Logging
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    
+    # Réseau
+    networks:
+      - guardian-network
+
+networks:
+  guardian-network:
+    driver: bridge
